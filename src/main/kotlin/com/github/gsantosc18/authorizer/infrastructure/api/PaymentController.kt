@@ -1,4 +1,4 @@
-package com.github.gsantosc18.authorizer.infrastruture.api
+package com.github.gsantosc18.authorizer.infrastructure.api
 
 import com.github.gsantosc18.authorizer.application.dto.ProcessPaymentRequest
 import com.github.gsantosc18.authorizer.application.dto.ProcessPaymentResponse

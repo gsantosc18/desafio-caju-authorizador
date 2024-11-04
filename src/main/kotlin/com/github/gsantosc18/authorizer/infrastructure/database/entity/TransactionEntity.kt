@@ -1,4 +1,4 @@
-package com.github.gsantosc18.authorizer.infrastruture.database.entity
+package com.github.gsantosc18.authorizer.infrastructure.database.entity
 
 import com.github.gsantosc18.authorizer.domain.vo.ResponseCode
 import com.github.gsantosc18.authorizer.domain.vo.TransactionStatus

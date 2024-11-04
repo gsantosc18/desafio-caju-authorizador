@@ -1,7 +1,7 @@
-package com.github.gsantosc18.authorizer.infrastruture.database.mapper
+package com.github.gsantosc18.authorizer.infrastructure.database.mapper
 
 import com.github.gsantosc18.authorizer.domain.entity.Transaction
-import com.github.gsantosc18.authorizer.infrastruture.database.entity.TransactionEntity
+import com.github.gsantosc18.authorizer.infrastructure.database.entity.TransactionEntity
 
 object Mapper {
     fun from(transaction: Transaction): TransactionEntity =

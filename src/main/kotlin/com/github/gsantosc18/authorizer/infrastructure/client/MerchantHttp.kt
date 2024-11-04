@@ -1,4 +1,4 @@
-package com.github.gsantosc18.authorizer.infrastruture.client
+package com.github.gsantosc18.authorizer.infrastructure.client
 
 import com.github.gsantosc18.authorizer.domain.vo.Merchant
 import org.springframework.cloud.openfeign.FeignClient

@@ -1,4 +1,4 @@
-package com.github.gsantosc18.authorizer.infrastruture.config
+package com.github.gsantosc18.authorizer.infrastructure.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.module.SimpleModule
@@ -12,7 +12,7 @@ import com.github.gsantosc18.authorizer.domain.client.BenefitClient
 import com.github.gsantosc18.authorizer.domain.client.MerchantClient
 import com.github.gsantosc18.authorizer.domain.client.WalletClient
 import com.github.gsantosc18.authorizer.domain.repository.TransactionRepository
-import com.github.gsantosc18.authorizer.infrastruture.serializer.ResponseCodeSerializer
+import com.github.gsantosc18.authorizer.infrastructure.serializer.ResponseCodeSerializer
 import feign.Logger
 import jakarta.annotation.PostConstruct
 import org.springframework.context.annotation.Bean

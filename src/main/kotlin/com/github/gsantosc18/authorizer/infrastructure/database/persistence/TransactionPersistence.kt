@@ -1,9 +1,9 @@
-package com.github.gsantosc18.authorizer.infrastruture.database.persistence
+package com.github.gsantosc18.authorizer.infrastructure.database.persistence
 
 import com.github.gsantosc18.authorizer.domain.entity.Transaction
 import com.github.gsantosc18.authorizer.domain.repository.TransactionRepository
-import com.github.gsantosc18.authorizer.infrastruture.database.mapper.Mapper
-import com.github.gsantosc18.authorizer.infrastruture.database.repository.TransactionJdbcRepository
+import com.github.gsantosc18.authorizer.infrastructure.database.mapper.Mapper
+import com.github.gsantosc18.authorizer.infrastructure.database.repository.TransactionJdbcRepository
 import org.springframework.stereotype.Component
 
 @Component
