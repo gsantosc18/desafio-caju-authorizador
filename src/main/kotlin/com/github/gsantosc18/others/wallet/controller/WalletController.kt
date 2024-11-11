@@ -1,10 +1,10 @@
 package com.github.gsantosc18.others.wallet.controller
 
-import com.github.gsantosc18.authorizer.domain.vo.Operation
-import com.github.gsantosc18.others.wallet.entity.WalletEntity
-import com.github.gsantosc18.others.wallet.repository.WalletRepository
-import java.time.LocalDateTime
+import com.github.gsantosc18.others.wallet.dto.UpdateWalletDTO
+import com.github.gsantosc18.others.wallet.dto.WalletDTO
+import com.github.gsantosc18.others.wallet.service.WalletService
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PutMapping
@@ -15,30 +15,29 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/wallet")
 class WalletController(
-    private val repository: WalletRepository
+    private val walletService: WalletService
 ) {
 
     @GetMapping("/{accountId}")
     fun getByAccountId(
         @PathVariable("accountId") accountId: String
-    ): ResponseEntity<WalletEntity?> =
-        repository.findByAccountId(accountId)
+    ): ResponseEntity<WalletDTO> =
+        walletService.findByAccountId(accountId)
             .let{ ResponseEntity.ok(it) }
 
     @PutMapping("/{accountId}")
     fun updateWallet(
         @PathVariable("accountId") accountId: String,
-        @RequestBody updateWallet: UpdateWallet
+        @RequestBody updateWalletDTO: UpdateWalletDTO
     ): ResponseEntity<Unit> {
-        val wallet: WalletEntity = repository.findByAccountId(updateWallet.accountId) ?: throw IllegalStateException("Wallet not found")
-        val value = when(updateWallet.operation) {
-            Operation.DEBIT -> wallet.balance - requireNotNull(updateWallet.value)
-            else -> wallet.balance + requireNotNull(updateWallet.value)
-        }
-        wallet.copy(
-            balance = value,
-            updatedAt = LocalDateTime.now()
-        ).let(repository::save)
+        walletService.update(accountId, updateWalletDTO)
         return ResponseEntity.ok().build()
     }
+
+    @ExceptionHandler(IllegalStateException::class)
+    fun exceptionHandler(ex: RuntimeException): ResponseEntity<Any> =
+        ResponseEntity.badRequest()
+            .body(mapOf(
+                "message" to ex.message
+            ))
 }
