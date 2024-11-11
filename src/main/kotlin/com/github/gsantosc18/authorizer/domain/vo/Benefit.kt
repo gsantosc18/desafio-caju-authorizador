@@ -9,5 +9,5 @@ data class Benefit(
     val balance: BigDecimal,
     val type: BenefitType
 ) {
-    fun isEnough(value: BigDecimal): Boolean = balance >= value && (balance - value) > ZERO
+    fun isEnough(value: BigDecimal): Boolean = balance >= value && (balance - value) >= ZERO
 }
